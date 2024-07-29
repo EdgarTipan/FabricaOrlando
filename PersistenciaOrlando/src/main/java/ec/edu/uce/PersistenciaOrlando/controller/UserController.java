@@ -1,11 +1,14 @@
 package ec.edu.uce.PersistenciaOrlando.controller;
 
+import ec.edu.uce.PersistenciaOrlando.model.Material;
 import ec.edu.uce.PersistenciaOrlando.model.User;
 import ec.edu.uce.PersistenciaOrlando.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -43,9 +46,14 @@ public class UserController {
                     .body("Llene todos los campos primero");
         }
 
-
         User savedUser = userService.save(user);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Registro exitoso. ¡Bienvenido!");
+    }
+
+    @GetMapping
+    public ResponseEntity<List<User>> getAllMaterials() {
+        List<User> materials = userService.findAll();
+        return ResponseEntity.ok(materials);
     }
 }
