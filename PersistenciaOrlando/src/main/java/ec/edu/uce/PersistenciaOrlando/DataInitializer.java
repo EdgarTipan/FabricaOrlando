@@ -112,7 +112,7 @@ public class DataInitializer implements CommandLineRunner {
 
         Product picoDiamante = new Product();
         picoDiamante.setName("Pico de diamante");
-        picoDiamante.setMaterialId(cristal.getId());
+        picoDiamante.setMaterialId(diamante.getId());
 
         productoService.save(espadaDiamante);
         productoService.save(picoDiamante);
